@@ -1,0 +1,20 @@
+{
+  "name": "ztime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "elec": "wait-on http://localhost:3000 && cd basefrontend && npm start",
+    "re": "cd frontend && npm start",
+    "py": "cd backend && python main.py",
+    "start": "concurrently \"npm run elec\" \"npm run re\" \"npm run py\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "wait-on": "^7.0.1"
+  }
+}
