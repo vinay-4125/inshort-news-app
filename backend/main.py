@@ -41,10 +41,17 @@ def page(id):
     return jsonify(data)
 
 
-@app.route('/weather', methods=['GET'])
-def weather():
+@app.route('/weather/<place>', methods=['GET'])
+def weather(place):
     data = requests.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=vadodara&appid=98ff32537d4469edd5db80a401eeb919&units=metric').json()
+        f'https://api.openweathermap.org/data/2.5/weather?q={place}&appid=5a35e071acabad52bd8792784b3e9114&units=metric').json()
+    return jsonify(data)
+
+
+@app.route('/weather', methods=['GET'])
+def weatherMobile():
+    data = requests.get(
+        'https://api.openweathermap.org/data/2.5/weather?q=vadodara&appid=5a35e071acabad52bd8792784b3e9114&units=metric').json()
     return jsonify(data)
 
 

@@ -93,42 +93,42 @@ export default function Nav() {
         <Navbar.Collapse>
           <Navbar.CollapseItem>
             <a style={white} href="/">
-              Headlines
+              <Text>Headlines</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/trending">
-              Trending
+              <Text>Trending</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/health">
-              Health
+              <Text>Health</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/science">
-              Science
+              <Text>Science</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/india">
-              India
+              <Text>India</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/technology">
-              Technology
+              <Text>Technology</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/sports">
-              Sports
+              <Text>Sports</Text>
             </a>
           </Navbar.CollapseItem>
           <Navbar.CollapseItem>
             <a style={white} href="/topics/entertainment">
-              Entertainment
+              <Text>Entertainment</Text>
             </a>
           </Navbar.CollapseItem>
         </Navbar.Collapse>

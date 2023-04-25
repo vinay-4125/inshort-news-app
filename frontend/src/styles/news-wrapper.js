@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const NewsWrapper = styled.div`
   margin: 1rem;
-  padding: 1rem;
+  ${"" /* padding: 1rem; */}
 `;
 
 export const LoadWrapper = styled.div`
@@ -29,8 +29,17 @@ export const PaginationWrapper = styled.div`
   animation-duration: 0.7s;
   animation-name: ${FadeUp};
   margin: auto;
-  width: 50%;
-  @media all and (max-width: 790px) {
-    width: 100%;
+  width: 35%;
+  @media all and (max-width: 900px) {
+    width: 40%;
+  }
+  @media (min-width: 780px) and (max-width: 790px) {
+    width: 50%;
+  }
+  @media all and (max-width: 670px) {
+    width: 60%;
+  }
+  @media (min-width: 200px) and (max-width: 540) {
+    width: 75%;
   }
 `;

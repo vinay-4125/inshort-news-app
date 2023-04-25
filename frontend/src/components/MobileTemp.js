@@ -1,25 +1,24 @@
 import { Button, Container, Grid, Image, Text } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import WeatherService from "../services/weather.service";
 
 const MobileTemp = () => {
-  // useEffect(() => {
-  // getTemperature();
-  // }, [count]);
+  useEffect(() => {
+    getTemperatureForMobile();
+  }, []);
   const [temperature, setTemperature] = useState("27");
   const [icon, setIcon] = useState("");
-  const getTemperature = async () => {
+  const getTemperatureForMobile = async () => {
     try {
-      let res = await WeatherService.getTemperature();
+      let res = await WeatherService.getTemperatureForMobile();
       setTemperature(res.data.main.temp);
       setIcon(res.icon_source);
-      // console.log(res);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
   };
-  getTemperature();
 
   return (
     <>

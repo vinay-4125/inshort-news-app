@@ -37,42 +37,6 @@ const Home = () => {
   return (
     <div>
       <NewsWrapper>
-        <div>
-          {/* <Container
-            gap={4}
-            css={{ d: "flex", flexWrap: "nowrap", zIndex: 1 }}
-            HideIn="smMax"
-          >
-            <Spacer x={1} />
-            <Tooltip
-              content={"Reading Today's Headlines"}
-              trigger="hover"
-              color="primary"
-            >
-              <Button auto flat color="primary">
-                <Text color="white">HeadLines</Text>
-              </Button>
-            </Tooltip>
-          </Container> */}
-        </div>
-        <div>
-          {/* <Grid.Container gap={2} justify="center">
-            <Grid xs={1}>
-              <Button
-                bordered
-                color="gradient"
-                style={{ cursor: "unset" }}
-                auto
-              >
-                HeadLines
-              </Button>
-            </Grid>
-            <Grid xs={4}>
-
-              <MobileTemp />
-            </Grid>
-          </Grid.Container> */}
-        </div>
         {news ? (
           <>
             <NewsConstructor item={news} />
