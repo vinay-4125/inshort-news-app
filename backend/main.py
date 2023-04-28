@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 import requests
 from flask_cors import CORS
+from winotify import Notification, audio
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -9,9 +11,9 @@ CORS(app)
 @app.route('/all/<int:id>', methods=['GET'])
 def homepage(id):
     page = id*10
-    data = requests.get(
+    dataHome = requests.get(
         f'https://inshorts.me/news/all?offset={page}&limit=10').json()
-    return jsonify(data)
+    return jsonify(dataHome)
 
 
 @app.route('/search/<term>/<int:id>', methods=['GET'])
@@ -55,5 +57,41 @@ def weatherMobile():
     return jsonify(data)
 
 
+def NotifyFetch():
+    dataNotifyFetch = requests.get(
+        f'https://inshorts.me/news/all?offset=0&limit=10').json()
+    return dataNotifyFetch
+
+
+dataNotify = NotifyFetch()
+articles = dataNotify['data']['articles'][0]['title']
+images = dataNotify['data']['articles'][0]['imageUrl']
+sourceUrl = dataNotify['data']['articles'][0]['sourceUrl']
+# print(sourceUrl)
+# sourceUrl
+# imageUrl
+
+
+# def toastFunc():
+#     toast = Notification(app_id="Inshorts", title=articles,
+#                          duration="short",
+#                          icon="D:\\College\\MCA\\sem2\\python\\project\\ztime\\frontend\\public\\images\\inshortlogoedited1.png",
+#                          launch="http://localhost:3000")
+
+#     toast.add_actions(label="Read More", launch="http://localhost:3000")
+#     toast.set_audio(audio.SMS, loop=False)
+#     toast.show()
+
+
+# toastFunc()
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
+# def timer(interval):
+#     while True:
+#         toastFunc()
+#         time.sleep(interval)
+
+# timer(300)
