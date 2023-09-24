@@ -2,7 +2,10 @@ from flask import Flask, request, jsonify
 import requests
 from flask_cors import CORS
 from winotify import Notification, audio
-import time
+import os
+
+API_KEY = os.getenv("APIKEY")
+
 
 app = Flask(__name__)
 CORS(app)
@@ -46,14 +49,14 @@ def page(id):
 @app.route('/weather/<place>', methods=['GET'])
 def weather(place):
     data = requests.get(
-        f'https://api.openweathermap.org/data/2.5/weather?q={place}&appid=5a35e071acabad52bd8792784b3e9114&units=metric').json()
+        f'https://api.openweathermap.org/data/2.5/weather?q={place}&appid={API_KEY}&units=metric').json()
     return jsonify(data)
 
 
 @app.route('/weather', methods=['GET'])
 def weatherMobile():
     data = requests.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=vadodara&appid=5a35e071acabad52bd8792784b3e9114&units=metric').json()
+        'https://api.openweathermap.org/data/2.5/weather?q=vadodara&appid={API_KEY}&units=metric').json()
     return jsonify(data)
 
 
@@ -72,18 +75,18 @@ sourceUrl = dataNotify['data']['articles'][0]['sourceUrl']
 # imageUrl
 
 
-# def toastFunc():
-#     toast = Notification(app_id="Inshorts", title=articles,
-#                          duration="short",
-#                          icon="D:\\College\\MCA\\sem2\\python\\project\\ztime\\frontend\\public\\images\\inshortlogoedited1.png",
-#                          launch="http://localhost:3000")
+def toastFunc():
+    toast = Notification(app_id="Inshorts", title=articles,
+                         duration="short",
+                         icon="D:\\College\\MCA\\sem2\\python\\project\\ztime\\frontend\\public\\images\\inshortlogoedited1.png",
+                         launch="http://localhost:3000")
 
-#     toast.add_actions(label="Read More", launch="http://localhost:3000")
-#     toast.set_audio(audio.SMS, loop=False)
-#     toast.show()
+    toast.add_actions(label="Read More", launch="http://localhost:3000")
+    toast.set_audio(audio.SMS, loop=False)
+    toast.show()
 
 
-# toastFunc()
+toastFunc()
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

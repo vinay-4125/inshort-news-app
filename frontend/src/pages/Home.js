@@ -9,8 +9,8 @@ import {
   NewsWrapper,
   PaginationWrapper,
 } from "../styles/news-wrapper";
-// import MobileTemp from "../components/MobileTemp";
-
+// // import MobileTemp from "../components/MobileTemp";
+// import WeatherComp from "../components/WeatherComp";
 const Home = () => {
   let [news, setNews] = useState();
 
@@ -40,6 +40,7 @@ const Home = () => {
         {news ? (
           <>
             <NewsConstructor item={news} />
+            {/* <WeatherComp /> */}
             <PaginationWrapper>
               <Pagination
                 total={10}
