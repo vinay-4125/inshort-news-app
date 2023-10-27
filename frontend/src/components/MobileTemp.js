@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Image, Text } from "@nextui-org/react";
+import { Image, Text } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
 import WeatherService from "../services/weather.service";

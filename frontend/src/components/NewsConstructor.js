@@ -9,38 +9,62 @@ export default function NewsConstructor({ item }) {
       <NewsContentWrapper key={key}>
         <Card isHoverable variant="bordered" style={newsStyle}>
           <DesktopItems>
-            <Image
-              width={320}
-              height={180}
-              src={news.imageUrl}
-              alt="Default Image"
-              objectFit="cover"
-              draggable="false"
-              showSkeleton
-            />
+            {news.urlToImage ? (
+              <Image
+                width={320}
+                height={180}
+                src={news.urlToImage}
+                alt="Default Image"
+                objectFit="cover"
+                draggable="false"
+                showSkeleton
+              />
+            ) : (
+              <Image
+                width={320}
+                height={180}
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs.yimg.com%2Fuu%2Fapi%2Fres%2F1.2%2FPFqbgwK_zLuFEWEDXLzZ7g--~B%2FaD0zOTA7dz02OTA7c209MTthcHBpZD15dGFjaHlvbg--%2Fhttp%3A%2F%2Fmedia.zenfs.com%2Fen_SG%2FNews%2Fe27%2Finshorts_logo_690x390.png&f=1&nofb=1&ipt=e5fd396da6d51a924231122e5df8b9ef088791679cdca51e67dd76c5676feb28&ipo=images"
+                alt="Default Image"
+                objectFit="cover"
+                draggable="false"
+                showSkeleton
+              />
+            )}
             <Text>
               <h3>{news.title}</h3>
             </Text>
             <Text color="grey">
-              <h6>{news.content}</h6>
+              <h6>{news.description}</h6>
             </Text>
           </DesktopItems>
 
           <MobileItems>
-            <Image
-              width={320}
-              height={180}
-              src={news.imageUrl}
-              alt="Default Image"
-              objectFit="cover"
-              draggable="false"
-              showSkeleton
-            />
+            {news.urlToImage ? (
+              <Image
+                width={320}
+                height={180}
+                src={news.urlToImage}
+                alt="Default Image"
+                objectFit="cover"
+                draggable="false"
+                showSkeleton
+              />
+            ) : (
+              <Image
+                width={320}
+                height={180}
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs.yimg.com%2Fuu%2Fapi%2Fres%2F1.2%2FPFqbgwK_zLuFEWEDXLzZ7g--~B%2FaD0zOTA7dz02OTA7c209MTthcHBpZD15dGFjaHlvbg--%2Fhttp%3A%2F%2Fmedia.zenfs.com%2Fen_SG%2FNews%2Fe27%2Finshorts_logo_690x390.png&f=1&nofb=1&ipt=e5fd396da6d51a924231122e5df8b9ef088791679cdca51e67dd76c5676feb28&ipo=images"
+                alt="Default Image"
+                objectFit="cover"
+                draggable="false"
+                showSkeleton
+              />
+            )}
             <Text color="white">
               <h3>{news.title}</h3>
             </Text>
             <Text color="grey">
-              <h6>{news.content}</h6>
+              <h6>{news.description}</h6>
             </Text>
           </MobileItems>
           <DesktopItems>
@@ -56,10 +80,10 @@ export default function NewsConstructor({ item }) {
                     {news.sourceName}
                   </Text>
                   <Text size={"$sm"} color="gray">
-                    <p>Report by -{news.authorName}</p>
+                    <p>Source - {news.author}</p>
                     {/* {moment(news.createdAt).format("YYYY/MM/D")} */}
                     {/* <br /> */}
-                    <Moment fromNow>{news?.createdAt}</Moment>
+                    <Moment fromNow>{news?.publishedAt}</Moment>
                   </Text>
                 </div>
               </Grid>
@@ -67,7 +91,7 @@ export default function NewsConstructor({ item }) {
                 <Button
                   size={"lg"}
                   auto
-                  onClick={() => window.open(news.sourceUrl)}
+                  onClick={() => window.open(news.url)}
                   color={"gradient"}
                 >
                   Read Post
@@ -90,9 +114,9 @@ export default function NewsConstructor({ item }) {
                     {news.sourceName}
                   </Text>
                   <Text size={"$sm"} color="gray">
-                    <p>Report by -{news.authorName}</p>
+                    <p>Source - {news.author}</p>
                     {/* {moment(news.createdAt).format("YYYY/MM/D")} */}
-                    <Moment fromNow>{news?.createdAt}</Moment>
+                    <Moment fromNow>{news?.publishedAt}</Moment>
                   </Text>
                 </div>
               </Grid>
@@ -100,7 +124,7 @@ export default function NewsConstructor({ item }) {
                 <Button
                   style={{ marginTop: "10px" }}
                   auto
-                  onClick={() => window.open(news.sourceUrl)}
+                  onClick={() => window.open(news.url)}
                   color={"gradient"}
                 >
                   Read Post

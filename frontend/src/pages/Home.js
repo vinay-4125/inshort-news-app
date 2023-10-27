@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Grid, Loading, Pagination } from "@nextui-org/react";
+import { Loading, Pagination } from "@nextui-org/react";
 import NewsConstructor from "../components/NewsConstructor";
 
 import NewsService from "../services/news.service";

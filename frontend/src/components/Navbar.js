@@ -6,7 +6,7 @@ import {
   Container,
   Switch,
 } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { DesktopItems, MobileItems } from "../styles/responsive";
 import { useState } from "react";
@@ -46,10 +46,18 @@ export default function Nav(props) {
             </Text> */}
           </MobileItems>
           <Container hideIn={"md"}>
-            <Image src={icon} width={20} height={20} alt="" objectFit="cover" />
-            <Text b color="inherit" hideIn="xs" onClick={() => navigate("/")}>
-              Inshort
-            </Text>
+            <Link to="/">
+              <Image
+                src={icon}
+                width={20}
+                height={20}
+                alt=""
+                objectFit="cover"
+              />
+              <Text b color="inherit" hideIn="xs" onClick={() => navigate("/")}>
+                Inshort
+              </Text>
+            </Link>
           </Container>
         </Navbar.Brand>
 
